@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import withMonitoringData from './withMonitoringData';
 
-function App() {
+const App = ({
+  temp,
+  pressure,
+  humidity,
+}) => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <table>
+       <thead>
+        <tr>
+          <th>Temperature</th>
+          <th>Air pressure</th>
+          <th>Humidity</th>
+        </tr>
+       </thead>
+       <tbody>
+          <tr>
+            <td>{temp || 'N/A'}</td>
+            <td>{pressure || 'N/A'}</td>
+            <td>{humidity || 'N/A'}</td>
+          </tr>
+       </tbody>
+     </table>
     </div>
   );
 }
 
-export default App;
+export default withMonitoringData(App);
